@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -7,14 +8,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 class DialMainLogic extends GetxController {
   var dialType = 0.obs;
   var currentIndex = 0.obs;
+  var showBox = true.obs;
+  var hourMinuteColor = const Color(0xffffffff);
+  var redValue = 0.obs;
+  var greenValue = 0.obs;
+  var blueValue = 0.obs;
+  var fontSize = 90.0.obs;
 
   var currentTime = DateTime.now().obs;
   var currentTimeStr = ''.obs;
 
   var showDay = true.obs;
 
-  List<double> hourTop = [58,81,85,73];
-  List<double> minuteTop = [45,70,72,68];
+  List<double> hourTop = [58, 81, 85, 73];
+  List<double> minuteTop = [45, 70, 72, 68];
 
   Timer? _timer;
 
@@ -35,6 +42,12 @@ class DialMainLogic extends GetxController {
   getData() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     showDay.value = prefs.getBool('showDay') ?? true;
+    final hourMinuteList = prefs.getStringList('hourMinuteColor') ?? [];
+    redValue.value = int.parse(hourMinuteList[0]);
+    greenValue.value = int.parse(hourMinuteList[1]);
+    blueValue.value = int.parse(hourMinuteList[2]);
+    hourMinuteColor = Color.fromARGB(255, redValue.value, greenValue.value, blueValue.value);
+    fontSize.value = prefs.getDouble('fontSize') ?? 90.0;
     update();
   }
 

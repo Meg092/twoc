@@ -6,9 +6,17 @@ import 'package:intl/intl.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class FourthItem extends StatefulWidget {
-  const FourthItem({this.isSmall = false, this.showDay = true, Key? key}) : super(key: key);
+  const FourthItem(
+      {this.isSmall = false,
+        this.showDay = true,
+        this.textColor = Colors.white,
+        this.fontSize = 100,
+        Key? key})
+      : super(key: key);
   final bool isSmall;
   final bool showDay;
+  final Color textColor;
+  final double fontSize;
 
   @override
   State<FourthItem> createState() => _FourthItemState();
@@ -72,8 +80,8 @@ class _FourthItemState extends State<FourthItem> {
           return Text(
             hourMinuteStr.value,
             style: TextStyle(
-                color: Colors.white,
-                fontSize: widget.isSmall ? 26 : 85,
+                color: widget.textColor,
+                fontSize: widget.isSmall ? 26 : widget.fontSize,
                 fontWeight: FontWeight.bold),
           );
         }),
@@ -83,11 +91,11 @@ class _FourthItemState extends State<FourthItem> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: widget.isSmall ? 12 : 50,
+              fontSize: widget.isSmall ? 12 : 40,
             ),
           );
         })
-      ].toRow(),
+      ].toRow(mainAxisSize: MainAxisSize.min),
       Obx(() {
         return Text(
           weekdayStr.value,

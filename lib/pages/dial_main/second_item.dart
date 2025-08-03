@@ -6,10 +6,17 @@ import 'package:intl/intl.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class SecondItem extends StatefulWidget {
-  const SecondItem({this.isSmall = false, this.showDay = true, Key? key})
+  const SecondItem(
+      {this.isSmall = false,
+        this.showDay = true,
+        this.textColor = Colors.white,
+        this.fontSize = 100,
+        Key? key})
       : super(key: key);
   final bool isSmall;
   final bool showDay;
+  final Color textColor;
+  final double fontSize;
 
   @override
   State<SecondItem> createState() => _SecondItemState();
@@ -71,8 +78,8 @@ class _SecondItemState extends State<SecondItem> {
           return Text(
             hourMinuteStr.value,
             style: TextStyle(
-                color: Colors.white,
-                fontSize: widget.isSmall ? 26 : 85,
+                color: widget.textColor,
+                fontSize: widget.isSmall ? 26 : widget.fontSize,
                 fontWeight: FontWeight.bold),
           );
         }),
@@ -82,13 +89,14 @@ class _SecondItemState extends State<SecondItem> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: widget.isSmall ? 12 : 50,
+              fontSize: widget.isSmall ? 12 : 40,
             ),
           ).marginOnly(bottom: widget.isSmall ? 6 : 17);
         })
       ].toRow(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end)
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min),
     ].toColumn(crossAxisAlignment: CrossAxisAlignment.start);
   }
 }

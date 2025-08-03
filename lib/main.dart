@@ -23,6 +23,8 @@ void main() async {
   final showDay = prefs.getBool('showDay') ;
   if (showDay == null) {
     await prefs.setBool('showDay', true);
+    await prefs.setStringList('hourMinuteColor', ['255', '255', '255']);
+    await prefs.setDouble('fontSize', 90);
   }
   runApp(const MyApp());
 }

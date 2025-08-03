@@ -6,10 +6,17 @@ import 'package:intl/intl.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class FirstItem extends StatefulWidget {
-  const FirstItem({this.isSmall = false, this.showDay = true, Key? key})
+  const FirstItem(
+      {this.isSmall = false,
+        this.showDay = true,
+        this.textColor = Colors.white,
+        this.fontSize = 100,
+        Key? key})
       : super(key: key);
   final bool isSmall;
   final bool showDay;
+  final Color textColor;
+  final double fontSize;
 
   @override
   State<FirstItem> createState() => _FirstItemState();
@@ -60,14 +67,14 @@ class _FirstItemState extends State<FirstItem> {
           return Text(
             hourMinuteStr.value,
             style: TextStyle(
-                color: Colors.white,
-                fontSize: widget.isSmall ? 26 : 100,
+                color: widget.textColor,
+                fontSize: widget.isSmall ? 26 : widget.fontSize,
                 fontWeight: FontWeight.bold),
           );
         }),
       ),
       Positioned(
-          bottom: widget.isSmall ? 0 : -20,
+          bottom: widget.isSmall ? 0 : -10,
           right: 0,
           child: Obx(() {
             return Text(
@@ -75,7 +82,7 @@ class _FirstItemState extends State<FirstItem> {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: widget.isSmall ? 12 : 60,
+                fontSize: widget.isSmall ? 12 : 40,
               ),
             );
           })),
