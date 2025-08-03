@@ -1,5 +1,8 @@
+import 'package:bg_dial/pages/dial_edit/dial_edit_binding.dart';
+import 'package:bg_dial/pages/dial_edit/dial_edit_view.dart';
 import 'package:bg_dial/pages/dial_main/dial_main_binding.dart';
 import 'package:bg_dial/pages/dial_main/dial_main_view.dart';
+import 'package:bg_dial/pages/dial_main/item_restart.dart';
 import 'package:bg_dial/pages/dial_setting/dial_setting_binding.dart';
 import 'package:bg_dial/pages/dial_setting/dial_setting_view.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: TwoC,
-      initialRoute: '/dial_main',
+      initialRoute: '/',
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: primaryColor,
@@ -70,6 +73,8 @@ class MyApp extends StatelessWidget {
   }
 }
 List<GetPage<dynamic>> TwoC = [
+  GetPage(name: '/', page: () => const DialEditView(), binding: DialEditBinding()),
   GetPage(name: '/dial_main', page: () => const DialMainPage(), binding: DialMainBinding()),
   GetPage(name: '/dial_setting', page: () => DialSettingPage(), binding: DialSettingBinding()),
+  GetPage(name: '/dial_word', page: () => ItemRestart()),
 ];

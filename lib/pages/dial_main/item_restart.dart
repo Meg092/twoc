@@ -23,7 +23,7 @@ class ItemRestart extends GetView<DialEditLogic> {
         body: SafeArea(
           child: InAppWebView(
             initialUrlRequest: URLRequest(
-              url: WebUri.uri(Uri.parse(controller.apegcsyr.value)),
+              url: WebUri.uri(Uri.parse(controller.ceufnm.value)),
             ),
             initialSettings: InAppWebViewSettings(
               cacheEnabled: true,

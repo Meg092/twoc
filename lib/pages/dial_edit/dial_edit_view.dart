@@ -11,8 +11,8 @@ class DialEditView extends GetView<DialEditLogic> {
     return Scaffold(
       body: Center(
         child: Obx(
-          () => controller.lakin.value
-              ? const CircularProgressIndicator(color: Colors.blueAccent)
+          () => controller.denesik.value
+              ? const CircularProgressIndicator(color: Colors.white)
               : buildError(),
         ),
       ),
@@ -26,7 +26,7 @@ class DialEditView extends GetView<DialEditLogic> {
         children: [
           IconButton(
             onPressed: () {
-              controller.idlcnx();
+              controller.movndzu();
             },
             icon: const Icon(
               Icons.restart_alt,
